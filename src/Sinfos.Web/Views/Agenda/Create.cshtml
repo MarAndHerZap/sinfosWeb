@@ -1,0 +1,72 @@
+﻿@model Sinfos.Core.Domain.Agenda
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <a class="btn btn-secondary btn-sm" asp-action="Index">Volver a la lista</a>
+</div>
+<hr />
+<body class="c-app flex-row align-items-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mx-4">
+                <div class="card-body p-4">
+                    <h1>Crear</h1>
+                    <p class="text-muted">Crea tu agendamiento</p>
+                    <hr />
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col">
+                                    <label asp-for="Fecha" class="control-label"></label>
+                                    <input asp-for="Fecha" type="date" class="form-control" />
+                                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="Hora_inicio" class="control-label"></label>
+                                    <input asp-for="Hora_inicio" type="time" class="form-control" />
+                                    <span asp-validation-for="Hora_inicio" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Hallazgo" class="control-label"></label>
+                            <textarea asp-for="Hallazgo" class="form-control" cols="30" rows="10"></textarea>
+                            <span asp-validation-for="Hallazgo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="UserId" class="control-label"></label>
+                            <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                        </div>
+
+                        <hr />
+
+                        <div class="form-group">
+                            <input type="submit" value="Crear" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</body>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
